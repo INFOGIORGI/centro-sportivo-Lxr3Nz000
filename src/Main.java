@@ -7,7 +7,7 @@ import java.io.IOException;
 public class Main {
 
     public static void main(String[] args) {
-        String path = "";
+        String path = "input.txt";
         CentroSportivo c = new CentroSportivo();
         input(path, c);
     }
@@ -18,13 +18,17 @@ public class Main {
             while (tScanner.hasNextLine()) {
                 String s = tScanner.nextLine();
                 String []sp = s.split(";");
-                if(sp[1]=="I"){
+                if(sp[0]=="I"){
 
-                    c.aggiungiIstruttore(sp[2], sp[3], sp[4]);
+                    c.aggiungiIstruttore(sp[1], sp[2], sp[3]);
                 }
-                if(sp[1]=="S"){
+                else if(sp[0]=="S"){
 
-                    c.aggiungiIstruttore(sp[2], sp[3], sp[4]);
+                    c.aggiungiSocio(sp[1], sp[2], sp[3]);
+                }
+                else if(sp[0]=="AT"){
+
+                    c.aggiungiAttivita(sp[1], sp[2], sp[3],sp[4],sp[5]);
                 }
             }
             tScanner.close();
@@ -33,6 +37,7 @@ public class Main {
             // TODO: handle exception
         }
     }
+    
 
      
 }
